@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText et1;
     private EditText et2;
+    private EditText et3;
     private TextView tv1;
 
     @Override
@@ -19,53 +20,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        et1 = (EditText)findViewById(R.id.valor_1);
-        et2 = (EditText)findViewById(R.id.valor_2);
-        tv1 = (TextView)findViewById(R.id.resultado);
+        et1 = (EditText)findViewById(R.id.nota_matematicas);
+        et2 = (EditText)findViewById(R.id.nota_fisica);
+        et3 = (EditText)findViewById(R.id.nota_quimica);
+        tv1 = (TextView)findViewById(R.id.tv_estatus);
     }
 
-    public void Sumar(View view){
-        String valor1 = et1.getText().toString();
-        String valor2 = et2.getText().toString();
+    public void Evaluar(View view){
+        String Matematica_str = et1.getText().toString();
+        String Fisica_str = et2.getText().toString();
+        String Quimica_str = et3.getText().toString();
 
-        int num1 = Integer.parseInt(valor1);
-        int num2 = Integer.parseInt(valor2);
+        int Matematica_int = Integer.parseInt(Matematica_str);
+        int Fisica_int = Integer.parseInt(Fisica_str);
+        int Quimica_int = Integer.parseInt(Quimica_str);
 
-        int suma = num1 + num2;
+        int promedio = (Matematica_int + Fisica_int + Quimica_int) / 3;
 
-        String result = String.valueOf(suma);
-        tv1.setText(result);
+        if(promedio >= 6){
+            tv1.setText("Estatus: Aprobado con "+promedio);
+        }else{
+            tv1.setText("Estatus: Reprobado con "+promedio);
+        }
     }
-
-    /*
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Toast.makeText(this,"OnStart", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Toast.makeText(this,"OnResume", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        Toast.makeText(this,"OnPause", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        Toast.makeText(this,"OnStop", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        Toast.makeText(this,"OnDestroy", Toast.LENGTH_SHORT).show();
-    }
-    */
 }
