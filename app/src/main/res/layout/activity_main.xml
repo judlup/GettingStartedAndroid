@@ -37,7 +37,7 @@
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="278dp"
-        android:layout_height="64dp"
+        android:layout_height="128dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,13 +56,28 @@
             android:layout_height="wrap_content"
             android:text="Restar"
             android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Multiplicar"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/rb4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dividir"
+            android:textSize="24sp" />
+
     </RadioGroup>
 
     <Button
         android:id="@+id/calcularBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:onClick="Calcular"
         android:text="Calcular"
         android:textSize="24sp"

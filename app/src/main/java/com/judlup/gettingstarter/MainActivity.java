@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private EditText et1, et2;
-    private RadioButton rb1, rb2;
+    private RadioButton rb1, rb2, rb3, rb4;
     private TextView tv1;
 
     @Override
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         tv1 = (TextView)findViewById(R.id.tv1);
         rb1 = (RadioButton)findViewById(R.id.rb1);
         rb2 = (RadioButton)findViewById(R.id.rb2);
+        rb3 = (RadioButton)findViewById(R.id.rb3);
+        rb4 = (RadioButton)findViewById(R.id.rb4);
     }
 
     public void Calcular(View view){
@@ -42,6 +44,18 @@ public class MainActivity extends AppCompatActivity {
             int resta = Valor_1_int - Valor_2_int;
             String resultado = String.valueOf(resta);
             tv1.setText(resultado);
+        }else if(rb3.isChecked() == true){
+            int multiplicar = Valor_1_int * Valor_2_int;
+            String resultado = String.valueOf(multiplicar);
+            tv1.setText(resultado);
+        }else if(rb4.isChecked() == true){
+            if(Valor_2_int == 0){
+                Toast.makeText(this,"El segundo valor no puede ser cero",Toast.LENGTH_SHORT).show();
+            }else{
+                int dividir = Valor_1_int / Valor_2_int;
+                String resultado = String.valueOf(dividir);
+                tv1.setText(resultado);
+            }
         }
     }
 }
