@@ -4,15 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText et1, et2;
-    private RadioButton rb1, rb2, rb3, rb4;
+    private CheckBox cb1, cb2, cb3, cb4;
     private TextView tv1;
 
     @Override
@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         et1 = (EditText)findViewById(R.id.valor_1);
         et2 = (EditText)findViewById(R.id.valor_2);
         tv1 = (TextView)findViewById(R.id.tv1);
-        rb1 = (RadioButton)findViewById(R.id.rb1);
-        rb2 = (RadioButton)findViewById(R.id.rb2);
-        rb3 = (RadioButton)findViewById(R.id.rb3);
-        rb4 = (RadioButton)findViewById(R.id.rb4);
+        cb1 = (CheckBox) findViewById(R.id.cb1);
+        cb2 = (CheckBox)findViewById(R.id.cb2);
+        cb3 = (CheckBox)findViewById(R.id.cb3);
+        cb4 = (CheckBox)findViewById(R.id.cb4);
     }
 
     public void Calcular(View view){
@@ -35,27 +35,28 @@ public class MainActivity extends AppCompatActivity {
 
         int Valor_1_int = Integer.parseInt(Valor_1);
         int Valor_2_int = Integer.parseInt(Valor_2);
-
-        if(rb1.isChecked() == true){
+        String resultado = "";
+        if(cb1.isChecked() == true){
             int suma = Valor_1_int + Valor_2_int;
-            String resultado = String.valueOf(suma);
-            tv1.setText(resultado);
-        }else if(rb2.isChecked() == true){
+            resultado = "La suma es: "+suma;
+        }
+        if(cb2.isChecked() == true){
             int resta = Valor_1_int - Valor_2_int;
-            String resultado = String.valueOf(resta);
-            tv1.setText(resultado);
-        }else if(rb3.isChecked() == true){
+            resultado = resultado+" La resta es: "+resta;
+        }
+        if(cb3.isChecked() == true){
             int multiplicar = Valor_1_int * Valor_2_int;
-            String resultado = String.valueOf(multiplicar);
-            tv1.setText(resultado);
-        }else if(rb4.isChecked() == true){
+            resultado = resultado+" La multiplicación es: "+multiplicar;
+        }
+        if(cb4.isChecked() == true){
             if(Valor_2_int == 0){
                 Toast.makeText(this,"El segundo valor no puede ser cero",Toast.LENGTH_SHORT).show();
             }else{
                 int dividir = Valor_1_int / Valor_2_int;
-                String resultado = String.valueOf(dividir);
-                tv1.setText(resultado);
+                resultado = resultado+" La división es: "+dividir;
             }
         }
+
+        tv1.setText(resultado);
     }
 }
