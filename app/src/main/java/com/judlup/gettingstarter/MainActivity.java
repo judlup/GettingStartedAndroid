@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void siguiente(View view){
         Intent sig = new Intent(this, SegundaActivity.class);
-        sig.putExtra("dato", et1.getText().toString());
+        sig.putExtra("url", et1.getText().toString());
         startActivity(sig);
     }
 }
