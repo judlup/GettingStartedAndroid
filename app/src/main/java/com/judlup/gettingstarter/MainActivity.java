@@ -2,7 +2,9 @@ package com.judlup.gettingstarter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,11 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         et1 = (EditText)findViewById(R.id.et1);
+
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        et1.setText(preferences.getString("mail",""));
     }
 
-    public void siguiente(View view){
-        Intent sig = new Intent(this, SegundaActivity.class);
-        sig.putExtra("url", et1.getText().toString());
-        startActivity(sig);
+    public void guardar(View view){
+        SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
+        SharedPreferences.Editor Obj_editor = preferencias.edit();
+        Obj_editor.putString("mail", et1.getText().toString());
+        Obj_editor.commit();
+        finish();
     }
 }
