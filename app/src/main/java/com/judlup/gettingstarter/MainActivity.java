@@ -14,15 +14,19 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText et1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        et1 = (EditText)findViewById(R.id.et1);
     }
 
     public void siguiente(View view){
-        Intent siguiente = new Intent(this, SegundaActivity.class);
-        startActivity(siguiente);
+        Intent sig = new Intent(this, SegundaActivity.class);
+        sig.putExtra("dato", et1.getText().toString());
+        startActivity(sig);
     }
 }
