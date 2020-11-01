@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText et1;
+    private EditText et1, et2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +24,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         et1 = (EditText)findViewById(R.id.et1);
-
-        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
-        et1.setText(preferences.getString("mail",""));
+        et2 = (EditText)findViewById(R.id.et2);
     }
 
     public void guardar(View view){
-        SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
-        SharedPreferences.Editor Obj_editor = preferencias.edit();
-        Obj_editor.putString("mail", et1.getText().toString());
-        Obj_editor.commit();
-        finish();
+        String nombre = et1.getText().toString();
+        String datos = et2.getText().toString();
+        SharedPreferences preferences = getSharedPreferences("agenda", Context.MODE_PRIVATE);
+        SharedPreferences.Editor obj_editor = preferences.edit();
+        obj_editor.putString(nombre,datos);
+        obj_editor.commit();
+        Toast.makeText(this, "El contacto ha sido guardado",Toast.LENGTH_SHORT).show();
+    }
+
+    public void buscar(View view){
+        String nombre = et1.getText().toString();
+
+        SharedPreferences preferencias = getSharedPreferences("agenda",Context.MODE_PRIVATE);
+        String datos = preferencias.getString(nombre, "");
+        if(datos.length() == 0){
+            Toast.makeText(this, "No se encontró ningín registro", Toast.LENGTH_LONG).show();
+        }else{
+            et2.setText(datos);
+        }
     }
 }
