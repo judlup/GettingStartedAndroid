@@ -22,17 +22,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv1 = (TextView)findViewById(R.id.tv1);
-        lv1 = (ListView) findViewById(R.id.lv1);
+    }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.list_view_content, nombres);
-        lv1.setAdapter(adapter);
+    public void clickImagen1(View view){
+        Toast.makeText(this,"Imagen 1",Toast.LENGTH_SHORT).show();
+    }
 
-        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                tv1.setText("La edad de "+lv1.getItemAtPosition(position)+" es "+edades[position]+" años");
-            }
-        });
+    public void clickImagen2(View view){
+        Toast.makeText(this,"Imagen 2",Toast.LENGTH_SHORT).show();
     }
 }
