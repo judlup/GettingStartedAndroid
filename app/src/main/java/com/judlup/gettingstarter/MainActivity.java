@@ -80,4 +80,28 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"Debe introducir el código del artículo", Toast.LENGTH_LONG).show();
         }
     }
+
+    public void eliminar(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
+
+        String codigo = et_codigo.getText().toString();
+        if(!codigo.isEmpty()){
+            int cantidad = BaseDeDatos.delete("articulos","codigo="+codigo,null);
+            BaseDeDatos.close();
+
+            et_codigo.setText("");
+            et_descripcion.setText("");
+            et_precio.setText("");
+
+            if(cantidad == 1){
+                Toast.makeText(this, "Artículo eliminado", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "El artículo no existe", Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            Toast.makeText(this, "Debes ingresar un código", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
